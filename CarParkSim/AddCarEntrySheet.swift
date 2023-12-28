@@ -42,23 +42,6 @@ struct AddCarEntrySheet: View {
         }
         isPresentingAddCarEntrySheet = false
     }
-
 }
-
-//struct AddCarEntrySheet_Previews: PreviewProvider {
-//    static var previews: some View {
-//        
-//        let initialParkingSlots: [Int: CarEntry] = [
-//                    1: CarEntry(registrationNumber: "ABC123", contactNumber: "1234567890", entryDateTime: Date()),
-//                    3: CarEntry(registrationNumber: "DEF456", contactNumber: "9876543210", entryDateTime: Date())
-//                ]
-//        
-//        AddCarEntrySheet(
-//            isPresentingAddCarEntrySheet: .constant(true),
-//            allSlots: .constant([1,2,3]),
-//            parkingSlots: .constant(initialParkingSlots)
-//        )
-//    }
-//}
 
 

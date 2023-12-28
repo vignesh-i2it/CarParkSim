@@ -12,18 +12,17 @@ struct ParkingSlotRow: View {
     let carEntry: CarEntry?
 
     @Binding var parkingSlots: [String: CarEntry]
+    @Binding var isPresentingCheckoutBill: Bool
+    @Binding var slotExited: String
+    @Binding var carExited: CarEntry?
+    @Binding var exitDateTime: Date?
     
     var body: some View {
         
         if let entry = carEntry {
-                NavigationLink(destination: CarEntryDetailsView(
-                        carEntry: entry,
-                        slotNumber: slotNumber,
-                        parkingSlots: $parkingSlots
-                    )
-                ) {
-                    rowContent(entry)
-                }
+                
+                rowContent(entry)
+            
             } else {
                 rowContent(nil)
                     .padding(7)
@@ -66,10 +65,23 @@ struct ParkingSlotRow: View {
             Text("\(slotNumber)")
             Spacer()
             if let entry = carEntry {
-                VStack(alignment: .trailing) {
-                    Text("\(entry.registrationNumber)")
-                    Text("\(formattedTime(date: entry.entryDateTime))")
-                    Text("\(entry.contactNumber)")
+                HStack{
+                    VStack(alignment: .trailing) {
+                        Text("\(entry.registrationNumber)")
+                        Text("\(formattedTime(date: entry.entryDateTime))")
+                        Text("\(entry.contactNumber)")
+                    }
+                    .padding(.trailing, 12)
+                    
+                    Button(action: {
+                        isPresentingCheckoutBill = true
+                        slotExited = slotNumber
+                        carExited = parkingSlots[slotNumber]
+                        exitDateTime = Date()
+                    }) {
+                        Image(systemName: "delete.right.fill")
+                            .foregroundColor(.red)
+                    }
                 }
             } else {
                 VStack(alignment: .trailing) {
@@ -83,28 +95,10 @@ struct ParkingSlotRow: View {
             }
         }
     }
-    
+
     func formattedTime(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         return dateFormatter.string(from: date)
-    }
-}
-
-struct ParkingSlotRow_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        let initialParkingSlots: [String: CarEntry] = [
-                    "1A": CarEntry(registrationNumber: "ABC123", contactNumber: "1234567890", entryDateTime: Date()),
-                    "1B": CarEntry(registrationNumber: "DEF456", contactNumber: "9876543210", entryDateTime: Date())
-                ]
-        
-        ParkingSlotRow(slotNumber: "1A", carEntry: nil,
-//                       occupiedSlots: .constant([1, 3]),
-//                       freeSlots: .constant([2, 4, 5, 6]),
-                       parkingSlots: .constant(initialParkingSlots))
-            .previewLayout(.sizeThatFits)
-            .padding()
     }
 }

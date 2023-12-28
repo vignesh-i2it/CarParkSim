@@ -51,14 +51,3 @@ struct CheckoutConfirmationView: View {
         return String(format: "₹%.2f", fee)
     }
 }
-
-
-struct CheckoutConfirmationView_Previews: PreviewProvider {
-    static var previews: some View {
-        let sampleEntry = CarEntry(registrationNumber: "ABC123",
-                                   contactNumber: "1234567890",
-                                   entryDateTime: Date())
-        
-        return CheckoutConfirmationView(carEntry: sampleEntry, slotNumber: "1A", exitDateTime: Date())
-    }
-}
