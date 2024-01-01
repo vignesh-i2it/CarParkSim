@@ -13,6 +13,7 @@ struct ContentView: View {
     
     @State private var searchText = ""
     @State private var isPresentingAddCarEntrySheet = false
+    @State private var isPresentingAddSlotsSheet = false
     @State private var isPresentingCheckoutBill = false
     @State private var slotExited = ""
     @State private var carExited: CarEntry?
@@ -41,7 +42,7 @@ struct ContentView: View {
                 .navigationTitle("Lot status")
                 .toolbar {
                     Button(action: {
-                        //
+                        isPresentingAddSlotsSheet = true
                     }) {
                         //Image(systemName: "plus")
                         Text("Add slots")
@@ -67,6 +68,12 @@ struct ContentView: View {
         .sheet(isPresented: $isPresentingAddCarEntrySheet) {
             AddCarEntrySheet(
                 isPresentingAddCarEntrySheet: $isPresentingAddCarEntrySheet,
+                parkingSlots: $parkingSlots
+            )
+        }
+        .sheet(isPresented: $isPresentingAddSlotsSheet) {
+            AddSlotsSheet(
+                isPresentingAddSlotsSheet: $isPresentingAddSlotsSheet,
                 parkingSlots: $parkingSlots
             )
         }

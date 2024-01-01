@@ -20,6 +20,7 @@ struct CarEntryFormView: View {
             
             Section(header: Text("Contact Details")) {
                 TextField("Enter phone number ", text: $contactNumber)
+                    .keyboardType(.numberPad)
             }
         }
     }
