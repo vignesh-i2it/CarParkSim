@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddCarEntrySheet: View {
     
-
     @State private var registrationNumber = ""
     @State private var contactNumber = ""
     @State private var showAlert = false
