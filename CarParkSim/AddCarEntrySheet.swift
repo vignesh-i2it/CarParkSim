@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct AddCarEntrySheet: View {
-
-    @Binding var isPresentingAddCarEntrySheet: Bool
-    var allSlots: [String]
-    @Binding var parkingSlots: [String: CarEntry]
     
+
     @State private var registrationNumber = ""
     @State private var contactNumber = ""
-    
+
+    @Binding var isPresentingAddCarEntrySheet: Bool
+    @Binding var parkingSlots: [ParkingSlot]
+
     var body: some View {
         NavigationStack {
             CarEntryFormView(registrationNumber: $registrationNumber, contactNumber: $contactNumber)
@@ -35,11 +35,12 @@ struct AddCarEntrySheet: View {
     }
     
     func addCarEntry() {
-        
-        if let nearestFreeSlot = allSlots.first(where: { !parkingSlots.keys.contains($0) }) {
+        if let index = parkingSlots.firstIndex(where: { $0.carEntry == nil }) {
             let newEntry = CarEntry(registrationNumber: registrationNumber, contactNumber: contactNumber, entryDateTime: Date())
-            parkingSlots[nearestFreeSlot] = newEntry
+            parkingSlots[index].carEntry = newEntry
+            print(index)
         }
+        print(parkingSlots[0].carEntry?.registrationNumber ?? "No car parked in this slot.")
         isPresentingAddCarEntrySheet = false
     }
 }

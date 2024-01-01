@@ -8,21 +8,19 @@
 import SwiftUI
 
 struct ParkingSlotRow: View {
+    
     let slotNumber: String
     let carEntry: CarEntry?
 
-    @Binding var parkingSlots: [String: CarEntry]
+    @Binding var parkingSlots: [ParkingSlot]
     @Binding var isPresentingCheckoutBill: Bool
     @Binding var slotExited: String
     @Binding var carExited: CarEntry?
-    @Binding var exitDateTime: Date?
-    
+        
     var body: some View {
         
         if let entry = carEntry {
-                
                 rowContent(entry)
-            
             } else {
                 rowContent(nil)
                     .padding(7)
@@ -73,11 +71,11 @@ struct ParkingSlotRow: View {
                     }
                     .padding(.trailing, 12)
                     
+                    
                     Button(action: {
                         isPresentingCheckoutBill = true
                         slotExited = slotNumber
-                        carExited = parkingSlots[slotNumber]
-                        exitDateTime = Date()
+                        carExited = entry
                     }) {
                         Image(systemName: "delete.right.fill")
                             .foregroundColor(.red)

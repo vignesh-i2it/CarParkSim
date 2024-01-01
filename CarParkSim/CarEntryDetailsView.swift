@@ -17,7 +17,6 @@ struct CarEntryDetailsView: View {
     
     @Binding var parkingSlots: [String: CarEntry]
     
-
     var body: some View {
         VStack {
             Text("Car Number: \(carEntry.registrationNumber)")

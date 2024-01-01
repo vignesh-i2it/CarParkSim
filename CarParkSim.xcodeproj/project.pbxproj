@@ -18,6 +18,7 @@
 		2FA2E38D2B358EA70099E3F7 /* CarEntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2E38C2B358EA70099E3F7 /* CarEntryFormView.swift */; };
 		2FB0FC092B3A9C930083895C /* CheckoutConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0FC082B3A9C930083895C /* CheckoutConfirmationView.swift */; };
 		2FB0FC0B2B3AAD740083895C /* CheckoutConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0FC0A2B3AAD740083895C /* CheckoutConfirmationSheet.swift */; };
+		2FB48FB82B3EA87000A5018D /* ParkingSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB48FB72B3EA87000A5018D /* ParkingSlot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		2FA2E38C2B358EA70099E3F7 /* CarEntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarEntryFormView.swift; sourceTree = "<group>"; };
 		2FB0FC082B3A9C930083895C /* CheckoutConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutConfirmationView.swift; sourceTree = "<group>"; };
 		2FB0FC0A2B3AAD740083895C /* CheckoutConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutConfirmationSheet.swift; sourceTree = "<group>"; };
+		2FB48FB72B3EA87000A5018D /* ParkingSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSlot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2FA2E3882B3563EC0099E3F7 /* CarEntry.swift */,
+				2FB48FB72B3EA87000A5018D /* ParkingSlot.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				2FA2E38D2B358EA70099E3F7 /* CarEntryFormView.swift in Sources */,
 				2F0DA48A2B3460F500CDE345 /* ParkingSlotRow.swift in Sources */,
 				2FB0FC0B2B3AAD740083895C /* CheckoutConfirmationSheet.swift in Sources */,
+				2FB48FB82B3EA87000A5018D /* ParkingSlot.swift in Sources */,
 				2F98E8542B18A785009E712A /* CarParkSimApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
