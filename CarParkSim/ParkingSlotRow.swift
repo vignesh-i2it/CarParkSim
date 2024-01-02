@@ -61,16 +61,19 @@ struct ParkingSlotRow: View {
     private func rowContent(_ entry: CarEntry?) -> some View {
         HStack {
             Text("\(slotNumber)")
-            Spacer()
+                //.padding(.leading, 10)
+            
             if let entry = carEntry {
                 HStack{
-                    VStack(alignment: .trailing) {
-                        Text("\(entry.registrationNumber)")
-                        Text("\(formattedTime(date: entry.entryDateTime))")
-                        Text("\(entry.contactNumber)")
+                    VStack(alignment: .leading) {
+                        Text("Registration no.: \(entry.registrationNumber.uppercased())")
+                        Text("Entered at: \(formattedTime(date: entry.entryDateTime))")
+                        Text("Contact no.: \(entry.contactNumber)")
                     }
-                    .padding(.trailing, 12)
+                    .bold()
+                    .padding(.leading, 15)
                     
+                    Spacer()
                     
                     Button(action: {
                         isPresentingCheckoutBill = true
@@ -82,6 +85,7 @@ struct ParkingSlotRow: View {
                     }
                 }
             } else {
+                Spacer()
                 VStack(alignment: .trailing) {
                     Text("")
                         .foregroundColor(.clear)

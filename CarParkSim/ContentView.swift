@@ -11,7 +11,10 @@ struct ContentView: View {
     
     @State private var parkingSlots: [ParkingSlot] = (1...36).map { ParkingSlot(slotNumber: "\($0)", carEntry: nil) }
     
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     @State private var searchText = ""
+    
     @State private var isPresentingAddCarEntrySheet = false
     @State private var isPresentingAddSlotsSheet = false
     @State private var isPresentingCheckoutBill = false
@@ -51,7 +54,7 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    isPresentingAddCarEntrySheet = true
+                    checkAndOpenAddCarView()
                 } label: {
                     Image(systemName: "plus")
                         .font(.title.weight(.semibold))
@@ -62,6 +65,9 @@ struct ContentView: View {
                         .shadow(radius: 4, x: 0, y: 4)
                 }
                 .padding()
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
         }
         .searchable(text: $searchText)
@@ -80,7 +86,7 @@ struct ContentView: View {
         .alert(isPresented: $isPresentingCheckoutBill) {
             Alert(
                 title:
-                    Text("                                                                  Registration no.: \(carExited?.registrationNumber ?? "")         \n   Contact no.:\(carExited?.contactNumber ?? "")                    \n   Entered at: \(formattedTime(carExited?.entryDateTime ?? Date())) \n    Exited at: \(formattedTime(Date()))                              \n          Duration: \(timeElapsed(carExited?.entryDateTime ?? Date()))     \n     Fare: \(calculateParkingFees(carExited?.entryDateTime ?? Date(), Date()))  "),
+                    Text("Registration no.: \(carExited?.registrationNumber ?? "")           \n Contact no.: \(carExited?.contactNumber ?? "")                       \n Entered at: \(formattedTime(carExited?.entryDateTime ?? Date()))    \n Exited at: \(formattedTime(Date()))                              \n Duration: \(timeElapsed(carExited?.entryDateTime ?? Date()))         \n Fare: \(calculateParkingFees(carExited?.entryDateTime ?? Date(), Date()))  "),
                 primaryButton: .default(Text("Checkout")) {
                     checkoutCar()
                 },
@@ -99,6 +105,20 @@ struct ContentView: View {
             }
         }
     }
+    
+    func checkAndOpenAddCarView() {
+        if parkingSlots.contains(where: { $0.carEntry == nil }) {
+            isPresentingAddCarEntrySheet = true
+        } else {
+            showAlert(message: "No available slots for new cars.")
+        }
+    }
+    
+    func showAlert(message: String) {
+        alertMessage = message
+        showAlert = true
+    }
+
     
     func checkoutCar() {
         if let index = parkingSlots.firstIndex(where: { $0.slotNumber == slotExited }) {

@@ -16,6 +16,9 @@ struct CarEntryFormView: View {
         Form {
             Section(header: Text("Car Number")) {
                 TextField("Enter registration number", text: $registrationNumber)
+                    .keyboardType(.asciiCapable)
+                    .autocapitalization(.allCharacters)
+                       
             }
             
             Section(header: Text("Contact Details")) {
