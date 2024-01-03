@@ -23,9 +23,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            
             ZStack(alignment: .bottomTrailing){
-                
                 List{
                     ForEach(searchResults) { parkingSlot in
                         Section {
@@ -86,7 +84,9 @@ struct ContentView: View {
         .alert(isPresented: $isPresentingCheckoutBill) {
             Alert(
                 title:
-                    Text("Registration no.: \(carExited?.registrationNumber ?? "")           \n Contact no.: \(carExited?.contactNumber ?? "")                       \n Entered at: \(formattedTime(carExited?.entryDateTime ?? Date()))    \n Exited at: \(formattedTime(Date()))                              \n Duration: \(timeElapsed(carExited?.entryDateTime ?? Date()))         \n Fare: \(calculateParkingFees(carExited?.entryDateTime ?? Date(), Date()))  "),
+                    Text("Registration no.: \(carExited?.registrationNumber ?? "")           \n Contact no.: \(carExited?.contactNumber ?? "")                       \n Entered at: \(formattedTime(carExited?.entryDateTime ?? Date()))    \n Exited at: \(formattedTime(Date()))                              \n Duration: \(timeElapsed(carExited?.entryDateTime ?? Date()))         \n Fare: \(calculateParkingFees(carExited?.entryDateTime ?? Date(), Date()))  ")
+                    .foregroundColor(.gray)
+                ,
                 primaryButton: .default(Text("Checkout")) {
                     checkoutCar()
                 },

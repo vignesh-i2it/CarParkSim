@@ -27,73 +27,53 @@ struct ParkingSlotRow: View {
             }
         }
         
-//        HStack {
-//                    Spacer()
-//                    if let entry = carEntry {
-//                        VStack(spacing: 4) {
-//                            Text("\(entry.registrationNumber)")
-//                            Text("\(formattedTime(date: entry.entryDateTime))")
-//                            Text("\(entry.contactNumber)")
-//                        }
-//                        .frame(maxWidth: .infinity, alignment: .trailing)
-//                        .background(Color.secondary.opacity(0.2))
-//                    } else {
-//                        Text("Available")
-//                    }
-//                    Spacer()
-//                }
-//                .overlay(
-//                    ZStack {
-//                        Text("Slot \(slotNumber)")
-//                            .foregroundColor(.white)
-//                            .padding(4)
-//                            .background(Color.blue)
-//                            .clipShape(Capsule())
-//                            .padding(.horizontal, 8)
-//                    }
-//                    .frame(maxWidth: .infinity, alignment: .center)
-//                    , alignment: .leading
-//                )
-//                .padding(.vertical, 8)
-//
-
     @ViewBuilder
     private func rowContent(_ entry: CarEntry?) -> some View {
-        HStack {
-            Text("\(slotNumber)")
-                //.padding(.leading, 10)
+       
             
-            if let entry = carEntry {
-                HStack{
-                    VStack(alignment: .leading) {
-                        Text("Registration no.: \(entry.registrationNumber.uppercased())")
-                        Text("Entered at: \(formattedTime(date: entry.entryDateTime))")
-                        Text("Contact no.: \(entry.contactNumber)")
-                    }
-                    .bold()
-                    .padding(.leading, 15)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        isPresentingCheckoutBill = true
-                        slotExited = slotNumber
-                        carExited = entry
-                    }) {
-                        Image(systemName: "delete.right.fill")
-                            .foregroundColor(.red)
-                    }
+        if let entry = carEntry {
+            HStack {
+                NumberedSquare(number: slotNumber, color: Color.red)
+                    .padding(0)
+    
+            HStack{
+                VStack(alignment: .leading) {
+                    Text("\(entry.registrationNumber.uppercased())").bold()
+                    Text("Entry       -  \(formattedTime(date: entry.entryDateTime))").bold().foregroundColor(.gray)
+                    Text("Contact  -  \(entry.contactNumber)").bold().foregroundColor(.gray)
                 }
-            } else {
+                .padding(.leading, 10)
+                
                 Spacer()
-                VStack(alignment: .trailing) {
-                    Text("")
-                        .foregroundColor(.clear)
-                    Text("Available")
-                        .foregroundColor(.green)
-                    Text("")
-                        .foregroundColor(.clear)
+                
+                Button(action: {
+                    isPresentingCheckoutBill = true
+                    slotExited = slotNumber
+                    carExited = entry
+                }) {
+                    Image(systemName: "delete.right.fill")
+                        .foregroundColor(.red)
                 }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: -10))
+            }
+        }
+        } else {
+            ZStack(alignment: .leading){
+                HStack{
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text("")
+                            .foregroundColor(.clear)
+                        Text("Available")
+                            .foregroundColor(.green)
+                        Text("")
+                            .foregroundColor(.clear)
+                    }
+                    Spacer()
+                }
+                
+                NumberedSquare(number: slotNumber, color: Color.green)
+                    .padding(EdgeInsets(top: 0, leading: -8, bottom: 0, trailing: 0))
             }
         }
     }

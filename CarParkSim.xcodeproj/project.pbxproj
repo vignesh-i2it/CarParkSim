@@ -20,6 +20,7 @@
 		2FB0FC092B3A9C930083895C /* CheckoutConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0FC082B3A9C930083895C /* CheckoutConfirmationView.swift */; };
 		2FB0FC0B2B3AAD740083895C /* CheckoutConfirmationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0FC0A2B3AAD740083895C /* CheckoutConfirmationSheet.swift */; };
 		2FB48FB82B3EA87000A5018D /* ParkingSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB48FB72B3EA87000A5018D /* ParkingSlot.swift */; };
+		2FCB17E72B43D66700F2D6C5 /* NumberedSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCB17E62B43D66700F2D6C5 /* NumberedSquare.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		2FB0FC082B3A9C930083895C /* CheckoutConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutConfirmationView.swift; sourceTree = "<group>"; };
 		2FB0FC0A2B3AAD740083895C /* CheckoutConfirmationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutConfirmationSheet.swift; sourceTree = "<group>"; };
 		2FB48FB72B3EA87000A5018D /* ParkingSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSlot.swift; sourceTree = "<group>"; };
+		2FCB17E62B43D66700F2D6C5 /* NumberedSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberedSquare.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				2FA2E3852B3563830099E3F7 /* Views */,
 				2F98E8552B18A785009E712A /* ContentView.swift */,
 				2F0DA4892B3460F500CDE345 /* ParkingSlotRow.swift */,
+				2FCB17E62B43D66700F2D6C5 /* NumberedSquare.swift */,
 				2FA2E38A2B3572DA0099E3F7 /* AddCarEntrySheet.swift */,
 				2FA18FBD2B433C3D0049114C /* AddSlotsSheet.swift */,
 				2FA2E38C2B358EA70099E3F7 /* CarEntryFormView.swift */,
@@ -182,6 +185,7 @@
 			files = (
 				2FA2E38B2B3572DA0099E3F7 /* AddCarEntrySheet.swift in Sources */,
 				2FA18FBE2B433C3D0049114C /* AddSlotsSheet.swift in Sources */,
+				2FCB17E72B43D66700F2D6C5 /* NumberedSquare.swift in Sources */,
 				2F98E8562B18A785009E712A /* ContentView.swift in Sources */,
 				2F9458F02B3A022900D7421B /* CarEntryDetailsView.swift in Sources */,
 				2FB0FC092B3A9C930083895C /* CheckoutConfirmationView.swift in Sources */,
